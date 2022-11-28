@@ -24,7 +24,7 @@ class AddToCart extends CartModifier {
     initialize() {
 	this._dom.addEventListener("click", () => {
 	    this._state.updateCart(this._bindedItem.id, 1);
-	    this._bindedItem.update();
+	    this._bindedItem.update(this._state);
 	}, false);
     }
 }
@@ -32,7 +32,7 @@ class RemoveFromCart extends CartModifier {
     initialize() {
 	this._dom.addEventListener("click", () => {
 	    this._state.updateCart(this._bindedItem.id, -1);
-	    this._bindedItem.update();
+	    this._bindedItem.update(this._state);
 	}, false);
     }
 }
