@@ -49,6 +49,7 @@ class AppState {
 	} else {
 	    this._state.totalCartItems += change;
 	}
+	this.saveState();
 	this.syncState();
     }
     get totalItemCount() {
