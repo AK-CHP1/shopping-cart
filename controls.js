@@ -20,7 +20,7 @@ class CartModifier {
     initialize() { }
 }
 
-class AddToCart extends CartModifier {
+export class AddToCart extends CartModifier {
     initialize() {
 	this._dom.addEventListener("click", () => {
 	    this._state.updateCart(this._bindedItem.id, 1);
@@ -28,7 +28,7 @@ class AddToCart extends CartModifier {
 	}, false);
     }
 }
-class RemoveFromCart extends CartModifier {
+export class RemoveFromCart extends CartModifier {
     initialize() {
 	this._dom.addEventListener("click", () => {
 	    this._state.updateCart(this._bindedItem.id, -1);

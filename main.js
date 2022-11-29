@@ -1,70 +1,43 @@
+import { shopItemsData as appData } from "./data.js";
+import { AppState } from "./state.js";
+import { ItemCard } from "./itemContainers.js";
+import { CartButton } from "./globalComponents.js";
+
+
+class ShopGererator {
+    constructor(dom) {
+	this._dom = dom;
+    }
+    generateShop(data) {
+	let nodes = [];
+	for (let item of data) {
+	    let dom = ItemCard.generateDOM(item);
+	    nodes.push(dom);
+	    this._dom.appendChild(dom);
+	}
+	let cards = [];
+	for (let item of nodes) {
+	    cards.push(new ItemCard(item));
+	}
+	return cards;
+    }
+}
+
+// Generating the shop
 const shop = document.querySelector(".shop");
-const basket = new Map();
+let shopGenerator = new ShopGenerator(shop);
+let cards = shopGenerator.generateShop(appData);
 
-function createShopItem(data) {
-    let shopItem = document.createElement("div");
-    shopItem.className = "item";
+// Generating the cart button
+const cartDOM = document.querySelector(".cart");
+let cartBtn = new CartButton(cartDOM);
 
-    let {id, name, price, desc, img} = data;
-    shopItem.dataset.pid = id;
-    shopItem.innerHTML = `
-    <img src="${img}" width="220px" alt="${name}">
-    <div class="details">
-        <h3>${name}</h3>
-        <p>${desc}</p>
-        <div class="price-quantity">
-            <h2>$ ${price}</h2>
-            <div class="buttons">
-                <i class="bi bi-dash-lg"></i>
-                <div class="quantity">0</div>
-                <i class="bi bi-plus-lg"></i>
-            </div>
-        </div>
-    </div>
-    `;
-    return shopItem;
+// Initializing the application state
+const state = new AppState([cartBtn]);
+
+// Generating the controls
+let controls = [];
+for (let card of cards) {
+    controls.push(card.generateControls());
 }
 
-function changeQuantity(item, changeBy) {
-    
-    quantity = item.querySelector(".quantity");
-    let newQuantity = Number(quantity.textContent) + changeBy;
-    if (newQuantity >= 0) {
-        quantity.textContent = newQuantity;
-        return newQuantity;
-    }
-    return 0;
-}
-
-function updateCartAmount() {
-    let total = Array.from(basket.values()).reduce((a, b) => a + b, 0);
-    let cartAmount = document.querySelector(".cart-amount");
-    cartAmount.textContent = total;
-    if (total > 0) {
-        cartAmount.style.display = "block";
-    } else {
-        cartAmount.style.display = "none";
-    }
-}
-
-let shopItems = shopItemsData.map(createShopItem);
-for (let item of shopItems) {
-    shop.appendChild(item);
-}
-shopItems.forEach(item => {
-    item.addEventListener("click", event => {
-        let change = 0;
-        let incButton = item.querySelector(".buttons>.bi-plus-lg");
-        let decButton = item.querySelector(".buttons>.bi-dash-lg");
-        if (event.target === incButton) {
-            change++;
-        } else if (event.target === decButton) {
-            change--;
-        } else {
-            return;
-        }
-        let newQuantity = changeQuantity(item, change);
-        basket.set(item.dataset.pid, newQuantity);
-        updateCartAmount();      
-    })
-})

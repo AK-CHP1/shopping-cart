@@ -4,7 +4,7 @@ managing the state of the appliaction i.e. details
 of items added to cart or wishlist and for notifying 
 other application components to update their state
 */
-class AppState {
+export class AppState {
     constructor(dependentComponents) {
 	this._state = null;
 	this._dependentComponents = dependentComponents;

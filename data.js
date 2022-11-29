@@ -84,3 +84,5 @@ let shopItemsData = [
     img: "images/img-12.png",
   },
 ];
+
+export shopItemsData;

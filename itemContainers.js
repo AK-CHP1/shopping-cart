@@ -5,6 +5,8 @@ on the page. All these item containers will inherit from base
 `ItemContainer` class and provide methods to change their states
 or generating controls.
 */
+import { AddToCart, RemoveFromCart } from "./controls.js";
+
 
 class ItemContainer {
     constructor(dom) {
@@ -18,13 +20,13 @@ class ItemContainer {
     generate_controls(state) {}
 }
 
-class ItemCard extends ItemContainer {
+export class ItemCard extends ItemContainer {
     update(state) {
 	let qtyBox = this._dom.querySelector(".quantity");
 	let currentCount = this.state.getProductCount();
 	qtyBox.textContent = currentCount;
     }
-    generate_controls(state) {
+    generateControls(state) {
 	let addBtn = this._dom.querySelector("i.bi-plus-lg");
 	let remBtn = this._dom.querySelector("i.bi-dash-lg");
 	return [
@@ -32,7 +34,7 @@ class ItemCard extends ItemContainer {
 	    RemoveFromCart(remBtn, this, state)
 	];
     }
-    static make_from_data(data) {
+    static generateDOM(data) {
 	let shopCard = document.createElement("div");
 	shopCard.className = "item";
 	let {id, name, price, desc, img} = data;
@@ -53,6 +55,6 @@ class ItemCard extends ItemContainer {
         </div>
         `;
 
-	return ItemCard(shopCard);
+	return shopCard;
     }
 }
