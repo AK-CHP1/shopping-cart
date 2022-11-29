@@ -21,6 +21,7 @@ class ShopGenerator {
 	}
 	return cards;
     }
+    
 }
 
 // Generating the shop
@@ -41,3 +42,7 @@ for (let card of cards) {
     controls.push(card.generateControls(state));
 }
 
+// Updating the state of each card for the startup
+cards.forEach(card => {
+    card.update(state);
+});

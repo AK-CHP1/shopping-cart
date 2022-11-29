@@ -46,6 +46,10 @@ export class AppState {
 	// also update the `totalCartItems` variable if item is still
 	// in the cart
 	if (this._state.cart[index].count <= 0) {
+	    // If the item is just removed also decrease the total products count
+	    if (this._state.cart[index].count == 0) {
+		this._state.totalCartItems += change;
+	    }
 	    this._state.cart.splice(index, 1);
 	} else {
 	    this._state.totalCartItems += change;
@@ -53,7 +57,7 @@ export class AppState {
 	this.saveState();
 	this.syncState();
     }
-    get totalItemCount() {
+    get totalItemsCount() {
 	return this._state.totalCartItems;
     }
     getProductCount(productId) {
