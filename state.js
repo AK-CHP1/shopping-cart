@@ -9,6 +9,7 @@ class AppState {
 	this._state = null;
 	this._dependentComponents = dependentComponents;
 	this.loadState();
+	this.syncState();
     }
     loadState() {
 	let data = localStorage.getItem("state");
