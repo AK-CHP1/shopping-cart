@@ -56,7 +56,7 @@ export class AppState {
 	this.saveState();
 	this.syncState();
     }
-    get totalItemCount() {
+    get totalItemsCount() {
 	return this._state.totalCartItems;
     }
     getProductCount(productId) {
