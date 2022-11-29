@@ -48,7 +48,6 @@ export class AppState {
 	if (this._state.cart[index].count <= 0) {
 	    // If the item is just removed also decrease the total products count
 	    if (this._state.cart[index].count == 0) {
-		console.log("Count was zero");
 		this._state.totalCartItems += change;
 	    }
 	    this._state.cart.splice(index, 1);
