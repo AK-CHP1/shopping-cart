@@ -25,6 +25,7 @@ export class ItemCard extends ItemContainer {
 	let qtyBox = this._dom.querySelector(".quantity");
 	let currentCount = state.getProductCount();
 	qtyBox.textContent = currentCount;
+	console.log("Item updated", currentCount);
     }
     generateControls(state) {
 	let addBtn = this._dom.querySelector("i.bi-plus-lg");
