@@ -1,4 +1,4 @@
-let shopItemsData = [
+export let shopItemsData = [
   {
     id: "jfhgbvnscs",
     name: "Casual Shirt",
@@ -84,5 +84,3 @@ let shopItemsData = [
     img: "images/img-12.png",
   },
 ];
-
-export shopItemsData;
