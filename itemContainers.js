@@ -30,7 +30,7 @@ export class ItemCard extends ItemContainer {
 	let addBtn = this._dom.querySelector("i.bi-plus-lg");
 	let remBtn = this._dom.querySelector("i.bi-dash-lg");
 	return [
-	    AddToCart(addBth, this, state),
+	    AddToCart(addBtn, this, state),
 	    RemoveFromCart(remBtn, this, state)
 	];
     }
