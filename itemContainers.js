@@ -25,13 +25,11 @@ export class ItemCard extends ItemContainer {
 	let qtyBox = this._dom.querySelector(".quantity");
 	let currentCount = state.getProductCount(this.id);
 	qtyBox.textContent = currentCount;
-	console.log("Item updated", currentCount);
     }
     generateControls(state) {
 	let addBtn = this._dom.querySelector("i.bi-plus-lg");
 	let remBtn = this._dom.querySelector("i.bi-dash-lg");
 	// Checking if the button found
-	console.log(addBtn, remBtn);
 	return [
 	    new AddToCart(addBtn, this, state),
 	    new RemoveFromCart(remBtn, this, state)

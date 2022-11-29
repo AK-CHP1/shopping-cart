@@ -16,7 +16,6 @@ class CartModifier {
 	this._bindedItem = item;
 	this._state = state;
 	this.initialize();
-	console.log("Constructor called");
     }
     initialize() { }
 }
@@ -27,7 +26,6 @@ export class AddToCart extends CartModifier {
 	    this._state.updateCart(this._bindedItem.id, 1);
 	    this._bindedItem.update(this._state);
 	}, false);
-	console.log("Handler added");
     }
 }
 export class RemoveFromCart extends CartModifier {
@@ -36,6 +34,5 @@ export class RemoveFromCart extends CartModifier {
 	    this._state.updateCart(this._bindedItem.id, -1);
 	    this._bindedItem.update(this._state);
 	}, false);
-	console.log("Handler added");
     }
 }

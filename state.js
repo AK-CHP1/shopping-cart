@@ -39,8 +39,6 @@ export class AppState {
 	}
 	// If item not found then add it to cart
 	if (index === this._state.cart.length) {
-	    console.log("Item not already present");
-	    console.log("Now added");
 	    this._state.cart.push({id:productId, count:change});
 	}
 	// If the item specified by `index` i.e. affected item
@@ -52,7 +50,6 @@ export class AppState {
 	} else {
 	    this._state.totalCartItems += change;
 	}
-	console.log("Cart:", this._state.cart);
 	this.saveState();
 	this.syncState();
     }
