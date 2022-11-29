@@ -38,6 +38,6 @@ const state = new AppState([cartBtn]);
 // Generating the controls
 let controls = [];
 for (let card of cards) {
-    controls.push(card.generateControls());
+    controls.push(card.generateControls(state));
 }
 
