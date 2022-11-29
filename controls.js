@@ -11,7 +11,7 @@ present in the cart
 */
 
 class CartModifier {
-    construcftor(dom, item, state) {
+    constructor(dom, item, state) {
 	this._dom = dom;
 	this._bindedItem = item;
 	this._state = state;
