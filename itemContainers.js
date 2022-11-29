@@ -29,6 +29,8 @@ export class ItemCard extends ItemContainer {
     generateControls(state) {
 	let addBtn = this._dom.querySelector("i.bi-plus-lg");
 	let remBtn = this._dom.querySelector("i.bi-dash-lg");
+	// Checking if the button found
+	console.log(addBtn, remBtn);
 	return [
 	    new AddToCart(addBtn, this, state),
 	    new RemoveFromCart(remBtn, this, state)
