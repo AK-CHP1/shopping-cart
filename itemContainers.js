@@ -23,7 +23,7 @@ class ItemContainer {
 export class ItemCard extends ItemContainer {
     update(state) {
 	let qtyBox = this._dom.querySelector(".quantity");
-	let currentCount = this.state.getProductCount();
+	let currentCount = state.getProductCount();
 	qtyBox.textContent = currentCount;
     }
     generateControls(state) {
