@@ -16,6 +16,7 @@ class CartModifier {
 	this._bindedItem = item;
 	this._state = state;
 	this.initialize();
+	console.log("Constructor called");
     }
     initialize() { }
 }
