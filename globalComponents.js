@@ -9,7 +9,7 @@ The `CartButton` class is used to manage the state
 of the cart icon which will be displayed on the top right
 corner of the screen
 */
-class CartButton {
+export class CartButton {
     constructor(dom) {
 	this._dom = dom;
 	this._qtyBox = dom.querySelector(".cart-amount");
