@@ -4,7 +4,7 @@ import { ItemCard } from "./itemContainers.js";
 import { CartButton } from "./globalComponents.js";
 
 
-class ShopGererator {
+class ShopGenerator {
     constructor(dom) {
 	this._dom = dom;
     }
